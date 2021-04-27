@@ -20,11 +20,11 @@ SRCS = ft_memset.c ft_bzero.c \
       ft_putnbr_fd.c ft_strlcpy.c \
       ft_strlcat.c ft_atoi.c \
       ft_split.c
-BNS = ft_lstnew ft_lstadd_front \
-      ft_lstsize ft_lstlast \
-      ft_lstadd_back ft_lstdelone \
-      ft_lstclear ft_lstiter \
-      ft_lstmap
+BNS = ft_lstnew.c ft_lstadd_front.c \
+      ft_lstsize.c ft_lstlast.c \
+      ft_lstadd_back.c ft_lstdelone.c \
+      ft_lstclear.c ft_lstiter.c \
+      ft_lstmap.c
 OBJS = ${SRCS:.c=.o}
 BNS_OBJS = ${BNS:.c=.o}
 DEPS = libft.h
