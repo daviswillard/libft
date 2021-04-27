@@ -32,7 +32,7 @@ all: ${LIB}
 .c.o: ${DEPS}
 	${CC} ${CFLAGS} $< -o $@
 ${LIB}: $(OBJS) $(BNS_OBJS)
-	ar -rc ${LIB} $^
+	ar -rc ${LIB} ${OBJS} ${BNS_OBJS}
 	ranlib ${LIB}
 clean:
 	rm -f $(OBJS) $(BNS_OBJS)
