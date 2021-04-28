@@ -1,7 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -c
-NAME = libft
-LIB = ${NAME}.a
+NAME = libft.a
 SRCS = ft_memset.c ft_bzero.c \
       ft_memcpy.c ft_memccpy.c \
       ft_memcmp.c ft_memmove.c \
@@ -28,15 +27,17 @@ BNS = ft_lstnew.c ft_lstadd_front.c \
 OBJS = ${SRCS:.c=.o}
 BNS_OBJS = ${BNS:.c=.o}
 DEPS = libft.h
-all: ${LIB}
-.c.o: ${DEPS}
-	${CC} ${CFLAGS} $< -o $@
-${LIB}: $(OBJS) $(BNS_OBJS)
-	ar -rc ${LIB} ${OBJS} ${BNS_OBJS}
-	ranlib ${LIB}
+all: $(NAME)
+.c.o: $(DEPS)
+	$(CC) $(CFLAGS) $< -o $@
+$(NAME): $(OBJS)
+	ar -rc $(NAME) $(OBJS)
+	ranlib $(NAME)
+bonus:
+	make OBJS="$(BNS_OBJS)" all
 clean:
 	rm -f $(OBJS) $(BNS_OBJS)
 fclean: clean
-	rm -f ${LIB} ${NAME}
+	rm -f $(NAME)
 re:	fclean all
-.PHONY:    all clean fclean re
+.PHONY:    all clean fclean re bonus
