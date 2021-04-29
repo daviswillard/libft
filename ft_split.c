@@ -23,6 +23,7 @@ static void	freedom(char **ret, char *s, char c)
 	count = 0;
 	while (count < word_counter(s, c))
 		free(ret[count]);
+	ret = NULL;
 	free(ret);
 }
 
