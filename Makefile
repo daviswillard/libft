@@ -27,12 +27,11 @@ BNS = ft_lstnew.c ft_lstadd_front.c \
 OBJS = ${SRCS:.c=.o}
 BNS_OBJS = ${BNS:.c=.o}
 DEPS = libft.h
-all: $(NAME)
+all: $(NAME) $(DEPS)
 .c.o: $(DEPS)
 	$(CC) $(CFLAGS) $< -o $@
 $(NAME): $(OBJS)
-	ar -rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	ar -rcs $(NAME) $?
 bonus:
 	make OBJS="$(BNS_OBJS)" all
 clean:
