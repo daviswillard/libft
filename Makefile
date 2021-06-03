@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -c
+CFLAGS = -Wall -Wextra -Werror -c 
 NAME = libft.a
 SRCS = ft_memset.c ft_bzero.c \
       ft_memcpy.c ft_memccpy.c \
@@ -25,12 +25,12 @@ BNS = ft_lstnew.c ft_lstadd_front.c \
       ft_lstclear.c ft_lstiter.c \
       ft_lstmap.c
 OBJS = ${SRCS:.c=.o}
-BNS_OBJS = ${BNS:.c=.o}
 DEPS = libft.h
-all: $(NAME) $(DEPS)
+BNS_OBJS = ${BNS:.c=.o}
+all: $(NAME)
 .c.o: $(DEPS)
 	$(CC) $(CFLAGS) $< -o $@
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(DEPS)
 	ar -rcs $(NAME) $?
 bonus:
 	make OBJS="$(BNS_OBJS)" all
